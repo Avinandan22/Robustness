@@ -9,6 +9,8 @@ import svelte from "@astrojs/svelte";
 
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://Avinandan22.github.io',
+  base: '/Robustness/',
   integrations: [tailwind(), icon(), mdx(), react(), svelte()],
   markdown: {
     shikiConfig: {
