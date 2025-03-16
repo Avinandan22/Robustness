@@ -23,6 +23,10 @@ import transformer from "../assets/transformer.webp";
 import Splat from "../components/Splat.tsx"
 import dogsDiffc from "../assets/dogs-diffc.png"
 import dogsTrue from "../assets/dogs-true.png"
+import Figure3 from "../assets/Figure3.avif"
+import schematic from "../assets/schematic.png"
+import table1 from "../assets/table1.webp"
+import mean from "../assets/mean.avif"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -74,13 +78,24 @@ export const components = {pre: CodeBlock, table: Table}
 />
 
 
-<HighlightedSection>
-
 ## Abstract
 
-This is a live demo for a template you can use to create a simple project page for your research paper. See the code for the template and instructions on how to use it yourself [here](https://github.com/RomanHauksson/academic-project-astro-template). It's made with the [Astro web framework](https://astro.build/) and styled with [Tailwind CSS](https://tailwindcss.com/). You write the content in [MDX](https://mdxjs.com/), which enables markdown formatting like **bold**, _italics_, and ~strikethrough~, as well as custom components like <SmallCaps>small caps.</SmallCaps>
+Machine learning (ML) and AI rely on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can compromise their reliability.
 
-</HighlightedSection>
+Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
+
+<Figure>
+  <Image slot="figure" source={table1} altText="Table 1: Cybersecurity risks of adversarial data poisoning" />
+  <span slot="caption">Table 1: Cybersecurity risks of adversarial data poisoning.</span>
+</Figure>
+
+Currently, much research focuses on certifying model robustness against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). For backdoor attack certification, studies typically involve adversaries poisoning offline datasets in a single step, making these attacks non-dynamic.
+
+Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Online attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model.
+
+This is particularly true for models that are continuously or periodically updated, such as those involved in fine-tuning or reinforcement learning from human feedback (RLHF).
+
+We introduce a new way to protect ML systems from dynamic data poisoning attacks. We developed a framework that helps us measure how much an attack could affect the model, and we use these measurements to create learning algorithms that can better handle such attacks.
 
 ## Figures
 
