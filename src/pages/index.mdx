@@ -78,10 +78,9 @@ export const components = {pre: CodeBlock, table: Table}
 />
 
 
-## Abstract
-<LaTeX formula='\theta' inline={true}/>
+## Introduction
 
-Machine learning (ML) and AI rely on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can implant malicious behaviors into AI. Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
+Artificial Intelligence (AI) relies on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can implant malicious behaviors into AI. Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
 
 <Figure>
   <Image slot="figure" source={table1} altText="Table 1: Cybersecurity risks of adversarial data poisoning" />
@@ -101,7 +100,7 @@ We assume that our learning algorithm is trying to estimate a set of parameters 
 
 <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> 
 
-where  <LaTeX formula='z' inline={true}/> denotes the current datapoint or batch of datapoints. $F$ represents any learning algorithm, and includes as special cases variants of gradient descent, reinforcement learning and evolutionary algorithms.
+where  <LaTeX formula='z' inline={true}/> denotes the current datapoint or batch of datapoints. <LaTeX formula='F' inline={true}> represents any learning algorithm, and includes as special cases variants of gradient descent, reinforcement learning and evolutionary algorithms.
 
 Some of the data points may be poisoned by an adversary who wants to mislead the learning algorithm towards parameters that optimize an adversarial objective  <LaTeX formula='\ell_{\text{adv}}(\theta)' inline={true}/>
 which could represent the prediction error of the model (for an adversary simply targeting reducing the performance of the learning algorithm) or more targeted objectives (like the model having a favorable view of a certain political party). At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter <LaTeX formula='\epsilon' inline={true}/>, which determines what fraction of data points are poisoned. Thus we have
@@ -131,7 +130,12 @@ Our main contribution is a robustness certificate, that computes an upper bound 
 
 In particular, we show that for any function <LaTeX formula='\lambda(\theta)' inline={true}/>, we have that
 
+<HighlightedSection>
+
+
 <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta)' /> - (*)
+
+</HighlightedSection>
 
 ## Derivation of the Certificate
 
@@ -170,16 +174,17 @@ The key here is to find a defense that works well on average, even when faced wi
 
 
 
-<HighlightedSection>
- 
-## Experiments on mean estimation
+ <HighlightedSection>
+
+## Proof of concept experiments on mean estimation
 
 
-We tested our defense on a set of 50 Gaussian distributions. The defense parameter was trained on 10 randomly chosen distributions, and we tested how well it performed when faced with poisoned data.
+We tested our defense on a set of 50 Gaussian distributions, where the defense was trained on 10 randomly chosen distributions, and we tested how well it performed on held out distributions under varying levels of data poisoning.
 
 The results (see Figure 3) demonstrate that our defense significantly improves performance compared to training without any defense. We varied the learning rates and the fraction of samples corrupted by the dynamic adversary.
 
 Based on our results, our algorithm performs much better at estimating the mean, even when a significant fraction of the data is poisoned.
+
 
 <Figure>
   <Image slot="figure" source={mean} altText="Figure 4: Test performance (mean squared error between true and estimated means)" />
@@ -187,7 +192,6 @@ Based on our results, our algorithm performs much better at estimating the mean,
 </Figure>
 
 </HighlightedSection>
-
 ## Conclusions
 
 Although we illustrated our framework using mean estimations and binary classification, its applications extend far beyond this simple example. Our defense strategies are particularly valuable for real-world AI systems, from binary classifiers making critical yes/no decisions (such as fraud detection in financial transactions) to multiclass systems categorizing data into multiple categories (such as image recognition or document topic classification).
