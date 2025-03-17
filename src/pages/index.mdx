@@ -124,7 +124,9 @@ The learning process forms a Markov chain with a transition kernel
 
 <LaTeX formula='\Pi_{z}(\theta^\prime|\theta) \epsilon \delta(F(\theta, z))\text{ where } z \sim \epsilon\delta(z^{\text{adv}}) + (1-\epsilon)\mathbb{P}_{\text{data}}' />
 
-The adversary’s goal is to maximize some kind of loss function—for example, increasing the error rate of predictions the model makes. We can think of the adversary’s actions as decisions in a game, where each move tries to make the model less accurate.
+The adversary's goal is to maximize
+
+<LaTeX formula='\lim_{T \to \infty} \frac{1}{T}\mathbb{E}\left[\sum_{t=0}^T \ell_{\text{adv}}(\theta_t)\right]' />
 
 
 
