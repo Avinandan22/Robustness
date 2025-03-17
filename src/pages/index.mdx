@@ -101,12 +101,9 @@ We assume that our learning algorithm is trying to estimate a set of parameters 
 
 <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> 
 
-where  <LaTeX formula='z' inline={true}/> denotes the current datapoint or batch of datapoints.
+where  <LaTeX formula='z' inline={true}/> denotes the current datapoint or batch of datapoints. $F$ represents any learning algorithm, and includes as special cases variants of gradient descent, reinforcement learning and evolutionary algorithms.
 
-Some of the data points may be poisoned by an adversary who wants to mislead the learning algorithm towards parameters that optimize some adversarial objective 
-
-<LaTeX formula='\ell_{\text{adv}}(\theta)'/>
-
+Some of the data points may be poisoned by an adversary who wants to mislead the learning algorithm towards parameters that optimize an adversarial objective  <LaTeX formula='\ell_{\text{adv}}(\theta)' inline={true}/>
 which could represent the prediction error of the model (for an adversary simply targeting reducing the performance of the learning algorithm) or more targeted objectives (like the model having a favorable view of a certain political party). At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter <LaTeX formula='\epsilon' inline={true}/>, which determines what fraction of data points are poisoned. Thus we have
 
 <LaTeX formula='z = z_{\text{adv}} \text{ with probability} \epsilon, z \sim \mathbb{P}_{\text{data}} \text{ with probability } 1-\epsilon'/>
@@ -128,13 +125,21 @@ The adversary's goal is to maximize
 
 <LaTeX formula='\lim_{T \to \infty} \frac{1}{T}\mathbb{E}\left[\sum_{t=0}^T \ell_{\text{adv}}(\theta_t)\right]' />
 
+Our main contribution is a robustness certificate, that computes an upper bound on the objective  This is a tool that helps us understand how much damage an adversarial attack can do to a model. Using this certificate, we can design algorithms that are more resistant to attacks (see Figure 2). We calculate how different choices of poisoned data influence the parameter estimates. This gives us a "measure" of the model's robustness. The certificate allows us to predict and limit the damage done by these attacks.
+
+In particular, we show that for any function <LaTeX formula='\lambda(\theta)' inline={true}>, we have that
+
+<LaTeX formula='\sup_{\theta, z_{\text{adv}}} \lambda(\theta) - \mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))] +\ell_{\text{adv}}(\theta)' />
 
 
-Our main contribution is the robustness certificate. This is a tool that helps us understand how much damage an adversarial attack can do to a model. Using this certificate, we can design algorithms that are more resistant to attacks (see Figure 2). We calculate how different choices of poisoned data influence the parameter estimates. This gives us a "measure" of the model's robustness. The certificate allows us to predict and limit the damage done by these attacks.
+##Meta-learning a robust learning algorithm
 
-Our approach is inspired by meta-learning, where we aim to design a learning algorithm that performs well across a range of distributions.
+In order to make the above certificate practically useful, we adopt a meta-learning framework we aim to design a learning algorithm that performs well across a range of distributions. We optimize a combination of two objectives:
+
+
 
 The first component focuses on the algorithm's ability to perform effectively without an adversary, by ensuring it converges to a stable set of parameters that results in low expected loss. The second component provides an upper bound on the potential worst-case loss the algorithm might face when an adversary is involved.
+
 
 The key here is to find a defense that works well on average, even when faced with new, unseen data distributions.
 <Figure>
@@ -142,9 +147,6 @@ The key here is to find a defense that works well on average, even when faced wi
   <span slot="caption">Figure 2: Schematic of robustness certificate.</span>
 </Figure>
 
-##Mathematical Derivation of Certificate
-
-We study 
 
 
 <HighlightedSection>
