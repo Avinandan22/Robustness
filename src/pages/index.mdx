@@ -127,7 +127,7 @@ The adversary's goal is to maximize
 
 Our main contribution is a robustness certificate, that computes an upper bound on the objective  This is a tool that helps us understand how much damage an adversarial attack can do to a model. Using this certificate, we can design algorithms that are more resistant to attacks (see Figure 2). We calculate how different choices of poisoned data influence the parameter estimates. This gives us a "measure" of the model's robustness. The certificate allows us to predict and limit the damage done by these attacks.
 
-In particular, we show that for any function <LaTeX formula='\lambda(\theta)' inline={true}>, we have that
+In particular, we show that for any function <LaTeX formula='\lambda(\theta)' inline={true}/>, we have that
 
 <LaTeX formula='\sup_{\theta, z_{\text{adv}}} \lambda(\theta) - \mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))] +\ell_{\text{adv}}(\theta)' />
 
