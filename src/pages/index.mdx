@@ -145,7 +145,7 @@ To see why the above result is true, let's assume that <LaTeX formula='\mu' inli
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)]'/>
 
-We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta_^\prime|\theta)]=\mu(\theta^\prime)' inline={true}/> since <LaTeX formula='\mu' inline={true}/> is stationary (note that we drop the subscript <LaTeX formula='\Pi_{z_{\text{adv}}}'/> for brevity). Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
+We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta^\prime|\theta)]=\mu(\theta^\prime)' inline={true}/> since <LaTeX formula='\mu' inline={true}/> is stationary (note that we drop the subscript <LaTeX formula='\Pi_{z_{\text{adv}}}'/> for brevity). Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)] + \mathbb{E}_{\theta^\prime \sim \mu}[\mathbb{E}_{\theta \sim \Pi(\theta|\theta^\prime)}[\lambda(\theta)]]'/>
 
@@ -155,7 +155,7 @@ Noting that in the final term we can relabel <LaTeX formula='\theta \to \theta^\
 
 Since  <LaTeX formula='\mu' inline={true}/> and <LaTeX formula=' \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)' inline={true}/> are probability measures, no matter what strategy the dynamic adversary chooses, they cannot increase the adversarial objective beyond
 
-<LaTeX formula='\sup_{\thete, z_{\text{adv}}}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\mu(\theta^\prime)]]'/>
+<LaTeX formula='\sup_{\theta, z_{\text{adv}}}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\mu(\theta^\prime)]]'/>
 
 showing that our certificate is indeed an upper bound on the adversarial objective (*)
 
