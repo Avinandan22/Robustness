@@ -121,7 +121,7 @@ The learning process forms a Markov chain with a transition kernel
 
 <LaTeX formula='\Pi_{z_{\text{adv}}}(\theta^\prime|\theta)= \delta(F(\theta, z))\text{ where } z \sim \epsilon\delta(z^{\text{adv}}) + (1-\epsilon)\mathbb{P}_{\text{data}}' />
 
-where $\delta$ denotes the Dirac delta distribution with all probability mass concentrated on a single point. The adversary's goal is to maximize
+where <LaTeX formula='\delta' inline={true}> denotes the Dirac delta distribution with all probability mass concentrated on a single point. The adversary's goal is to maximize
 
 <LaTeX formula='\lim_{T \to \infty} \frac{1}{T}\mathbb{E}\left[\sum_{t=0}^T \ell_{\text{adv}}(\theta_t)\right]' />
 
@@ -131,7 +131,17 @@ In particular, we show that for any function <LaTeX formula='\lambda(\theta)' in
 
 <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta)' />
 
-## Derivation of the Compute Certificate
+## Derivation of the Certificate
+
+To see why the above result is true, let's assume that <LaTeX formula='\mu' inline={true}/> denotes the stationary distribution for the Markov Chain induced by <LaTeX formula='\Pi' inline={true}/>. We are interested in upper bounding
+
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)]'/>
+
+We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta_^\prime|\theta)]=\mu(\theta^\prime)'/> since <LaTeX formula='\mu' inline={true}/> is stationary. Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
+
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]'/>
+
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]'/>
 
 
 
