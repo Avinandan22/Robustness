@@ -96,17 +96,9 @@ Dynamic attacks is particularly true for models that are continuously or periodi
 We introduce a new way to protect ML systems from dynamic data poisoning attacks. We developed a framework that helps us measure how much an attack could affect the model, and we use these measurements to create learning algorithms that can better handle such attacks.
 
 ## The Problem Setup
-We assume that our learning algorithm is trying to estimate a set of parameters <LaTex formula='\theta' /> (like the parameters of a neural network). The algorithm updates its estimate of θ with every new data point it receives.
+We assume that our learning algorithm is trying to estimate a set of parameters <LaTeX formula='\theta' /> (like the parameters of a neural network). We study online learning algorithms of the form <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> where  $z$ denotes the current datapoint or batch of datapoints.
 
-We study the setting of online learning, where the learning algorithm is continuously learning from new data. This is reflective of popular paradigms in frontier AI models, such as ChatGPT, Gemini, and Claude, that involve constantly adapting and improving the models given new data or feedback from users.
-
-In an online learning setup, the algorithm learns from one data point at a time and adjusts the model’s parameters accordingly. The update rule for the parameters maps the parameters at time (t) to new parameters given a data point.
-
-In our setup, some of the data points may be poisoned by an adversary who wants to mislead the algorithm. A practical example where this is shown to be possible is demonstrated in a paper about poisoning web-scale training datasets.
-
-Widely used models, such as Contrastive Language-Image Pre-training (CLIP), trained on data scraped from the web can be poisoned by an attacker who buys some of the domains harvested to create the training data and injects bad data.
-
-At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter $\epsilon$, which determines what fraction of data points are poisoned.
+Some of the data points may be poisoned by an adversary who wants to mislead the learning algorithm towards parameters that optimize some adversarial objective <LaTeX formula='\ell_{\text{adv}}(\theta)' />, which could represent the prediction error of the model (for an adversary simply targeting reducing the performance of the learning algorithm) or more targeted objectives (like the model having a favorable view of a certain political party). At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter <LaTeX formula='\epsilon'>, which determines what fraction of data points are poisoned.
 
 Unlike standard data poisoning attacks, where the poisoning adversary must choose the poisoned data points before learning happens, our setting allows the adversary to observe the online learning process and adjust their attack as the algorithm learns. This creates a more powerful threat model that can achieve stronger poisoning.
 <Figure>
@@ -118,7 +110,6 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-We study online learning algorithms of the form <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> where $\theta$  are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
