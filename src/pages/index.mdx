@@ -124,7 +124,7 @@ The learning process forms a Markov chain with a transition kernel
 
 where <LaTeX formula='\delta' inline={true}/> denotes the Dirac delta distribution with all probability mass concentrated on a single point. The adversary's goal is to maximize
 
-<LaTeX formula='\lim_{T \to \infty} \frac{1}{T}\mathbb{E}\left[\sum_{t=0}^T \ell_{\text{adv}}(\theta_t)\right]' />
+<LaTeX formula='\lim_{T \to \infty} \frac{1}{T}\mathbb{E}\left[\sum_{t=0}^T \ell_{\text{adv}}(\theta_t)\right] \quad -(*)' />
 
 Our main contribution is a robustness certificate, that computes an upper bound on the objective  This is a tool that helps us understand how much damage an adversarial attack can do to a model. Using this certificate, we can design algorithms that are more resistant to attacks (see Figure 2). We calculate how different choices of poisoned data influence the parameter estimates. This gives us a "measure" of the model's robustness. The certificate allows us to predict and limit the damage done by these attacks.
 
@@ -135,7 +135,7 @@ In particular, we show that , we have that
 ### Theorem
 For any function <LaTeX formula='\lambda(\theta)' inline={true}/>, the worst case objective achieved by the adversary is at most
 
-> > <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta) \quad -(*)' /> 
+> > <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta) \quad -(**)' /> 
 
 </HighlightedSection>
 
