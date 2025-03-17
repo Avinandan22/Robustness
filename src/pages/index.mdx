@@ -89,14 +89,14 @@ Machine learning (ML) and AI rely on massive, uncurated datasets, where verifyin
 
 Most prior research focuses on certifying robustness of AI training algorithms against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). 
 
-Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Online attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model. This was first demonstrated in [this paper](https://arxiv.org/abs/1808.08994), and subsequent work has expanded these initial findings in multiple directions
+Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Dynamic attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model. This was first demonstrated in [this paper](https://arxiv.org/abs/1808.08994), and [subsequent](http://proceedings.mlr.press/v120/zhang20b.html) [work](https://proceedings.mlr.press/v97/liu19e/liu19e.pdf) has expanded these initial findings in multiple directions.
 
-This is particularly true for models that are continuously or periodically updated, such as foundation models that undergo periodic fine-tuning or reinforcement learning from human feedback (RLHF).
+Dynamic attacks is particularly true for models that are continuously or periodically updated, such as foundation models that undergo periodic fine-tuning or reinforcement learning from human feedback (RLHF).
 
 We introduce a new way to protect ML systems from dynamic data poisoning attacks. We developed a framework that helps us measure how much an attack could affect the model, and we use these measurements to create learning algorithms that can better handle such attacks.
 
 ## The Problem Setup
-Let’s break down the problem. We assume that our learning algorithm is trying to estimate a set of parameters θ (like the parameters of a neural network). The algorithm updates its estimate of θ with every new data point it receives.
+We assume that our learning algorithm is trying to estimate a set of parameters <LaTex formula='\theta' /> (like the parameters of a neural network). The algorithm updates its estimate of θ with every new data point it receives.
 
 We study the setting of online learning, where the learning algorithm is continuously learning from new data. This is reflective of popular paradigms in frontier AI models, such as ChatGPT, Gemini, and Claude, that involve constantly adapting and improving the models given new data or feedback from users.
 
