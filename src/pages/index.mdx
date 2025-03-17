@@ -106,7 +106,7 @@ In our setup, some of the data points may be poisoned by an adversary who wants 
 
 Widely used models, such as Contrastive Language-Image Pre-training (CLIP), trained on data scraped from the web can be poisoned by an attacker who buys some of the domains harvested to create the training data and injects bad data.
 
-At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter, which determines what fraction of data points are poisoned.
+At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter $\epsilon$, which determines what fraction of data points are poisoned.
 
 Unlike standard data poisoning attacks, where the poisoning adversary must choose the poisoned data points before learning happens, our setting allows the adversary to observe the online learning process and adjust their attack as the algorithm learns. This creates a more powerful threat model that can achieve stronger poisoning.
 <Figure>
@@ -118,7 +118,7 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-We study online learning algorithms of the form <Latex>\theta^\prime \gets F(\theta, z)</Latex> where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
+We study online learning algorithms of the form $$\theta^\prime \gets F(\theta, z)$$ where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
