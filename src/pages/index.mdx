@@ -80,29 +80,27 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-Machine learning (ML) and AI rely on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can compromise their reliability.
-
-Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
+Machine learning (ML) and AI rely on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can implant malicious behaviors into AI. Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
 
 <Figure>
   <Image slot="figure" source={table1} altText="Table 1: Cybersecurity risks of adversarial data poisoning" />
   <span slot="caption">Table 1: Cybersecurity risks of adversarial data poisoning.</span>
 </Figure>
 
-Currently, much research focuses on certifying model robustness against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). For backdoor attack certification, studies typically involve adversaries poisoning offline datasets in a single step, making these attacks non-dynamic.
+Currently, much research focuses on certifying model robustness against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). Most work in this space studies adversaries poisoning offline datasets in a single step, making these attacks non-dynamic.
 
-Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Online attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model.
+Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Online attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model. This was first demonstrated in <a href> this paper https://arxiv.org/abs/1808.08994 </a>, and subsequent work has expanded these initial findings in multiple directions
 
-This is particularly true for models that are continuously or periodically updated, such as those involved in fine-tuning or reinforcement learning from human feedback (RLHF).
+This is particularly true for models that are continuously or periodically updated, such as foundation models that undergo periodic fine-tuning or reinforcement learning from human feedback (RLHF).
 
 We introduce a new way to protect ML systems from dynamic data poisoning attacks. We developed a framework that helps us measure how much an attack could affect the model, and we use these measurements to create learning algorithms that can better handle such attacks.
 
 ## The Problem Setup
-Let’s break down the problem. We assume that our learning algorithm is trying to estimate a set of parameters θ (like the mean of some data). The algorithm updates its estimate of θ with every new data point it receives.
+Let’s break down the problem. We assume that our learning algorithm is trying to estimate a set of parameters θ (like the parameters of a neural network). The algorithm updates its estimate of θ with every new data point it receives.
 
 We study the setting of online learning, where the learning algorithm is continuously learning from new data. This is reflective of popular paradigms in frontier AI models, such as ChatGPT, Gemini, and Claude, that involve constantly adapting and improving the models given new data or feedback from users.
 
-In an online learning setup, the algorithm learns from one data point at a time and adjusts the model’s parameters accordingly. The update rule for the parameters maps the parameters at time (t) to new parameters given an external noise and a data point.
+In an online learning setup, the algorithm learns from one data point at a time and adjusts the model’s parameters accordingly. The update rule for the parameters maps the parameters at time (t) to new parameters given a data point.
 
 In our setup, some of the data points may be poisoned by an adversary who wants to mislead the algorithm. A practical example where this is shown to be possible is demonstrated in a paper about poisoning web-scale training datasets.
 
@@ -120,7 +118,9 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-The learning process forms a chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
+We study online learning algorithms of the form $\theta^\prime \gets F(\theta, z)$ where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
+
+The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
 The adversary’s goal is to maximize some kind of loss function—for example, increasing the error rate of predictions the model makes. We can think of the adversary’s actions as decisions in a game, where each move tries to make the model less accurate.
 
@@ -139,6 +139,11 @@ The key here is to find a defense that works well on average, even when faced wi
   <Image slot="figure" source={Figure3} altText="Schematic of robustness certificate." />
   <span slot="caption">Figure 2: Schematic of robustness certificate.</span>
 </Figure>
+
+##Mathematical Derivation of Certificate
+
+We study 
+
 
 <HighlightedSection>
  
