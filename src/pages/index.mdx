@@ -143,7 +143,7 @@ To see why the above result is true, let's assume that <LaTeX formula='\mu' inli
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)]'/>
 
-We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta_^\prime|\theta)]=\mu(\theta^\prime)'/> since <LaTeX formula='\mu' inline={true}/> is stationary (note that we drop the subscript <LaTeX formula='\Pi_{z_{\text{adv}}}'> for brevity). Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
+We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta_^\prime|\theta)]=\mu(\theta^\prime)'/> since <LaTeX formula='\mu' inline={true}/> is stationary (note that we drop the subscript <LaTeX formula='\Pi_{z_{\text{adv}}}'/> for brevity). Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)] + \mathbb{E}_{\theta^\prime \sim \mu}[\mathbb{E}_{\theta \sim \Pi(\theta|\theta^\prime)}[\lambda(\theta)]]'/>
 
