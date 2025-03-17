@@ -111,24 +111,20 @@ which could represent the prediction error of the model (for an adversary simply
 
 <LaTeX formula='z = z_{\text{adv}} \text{ with probability} \epsilon, z \sim \mathbb{P}_{\text{data}} \text{ with probability } 1-\epsilon'/>
 
-Unlike standard data poisoning attacks, where the poisoning adversary must choose the poisoned data points before learning happens, our setting allows the adversary to observe the online learning process and adjust their attack as the algorithm learns. This creates a more powerful threat model that can achieve stronger poisoning.
 <Figure>
   <Image slot="figure" source={schematic} altText="Schematic diagrams highlighting the differences between static and dynamic data poisoning" />
   <span slot="caption">Figure 1: Schematic diagrams highlighting the differences between static and dynamic data poisoning.</span>
 </Figure>
 
-<HighlightedSection>
 
-## How the adversary affects the learning process
+## General Framework to Compute Certificate
 
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
 The adversary’s goal is to maximize some kind of loss function—for example, increasing the error rate of predictions the model makes. We can think of the adversary’s actions as decisions in a game, where each move tries to make the model less accurate.
 
-</HighlightedSection>
 
-## General Framework to Compute Certificate
 
 Our main contribution is the robustness certificate. This is a tool that helps us understand how much damage an adversarial attack can do to a model. Using this certificate, we can design algorithms that are more resistant to attacks (see Figure 2). We calculate how different choices of poisoned data influence the parameter estimates. This gives us a "measure" of the model's robustness. The certificate allows us to predict and limit the damage done by these attacks.
 
