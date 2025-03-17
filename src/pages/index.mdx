@@ -139,7 +139,10 @@ To see why the above result is true, let's assume that <LaTeX formula='\mu' inli
 
 We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta_^\prime|\theta)]=\mu(\theta^\prime)'/> since <LaTeX formula='\mu' inline={true}/> is stationary. Thus, we can add and subtract the expectation of an arbitrarily chosen function <LaTeX formula='\mu' inline={true}/> from the objective to obtain
 
-<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)] + \mathbb{E}_{\theta^\prime \sim \mu}[\Pi(\theta|\theta^\prime) \lambda(\theta^\prime)]'/>
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)] + \mathbb{E}_{\theta^\prime \sim \mu}[\mathbb{E}_{\theta \sim \Pi(\theta|\theta^\prime)}[\lambda(\theta)]]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)]+ \mathbb{E}_{\theta \sim \mu}[\mathbb{E}_{\theta^\prime \sim \Pi(\theta^\prime|\theta}[\lambda(\theta^\prime)]]'/>
+where the final equality follows from relabeling <LaTeX formula='\theta \to \theta^\prime, \theta^\prime \to \theta' inline={true}/>. Thus, the above expression can be seen as an expectation over $\theta \sim \mu$, of the form:
+
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi(\theta^\prime|\theta)}[\mu(\theta^\prime)]]'/>
 
 
 
