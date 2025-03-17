@@ -118,7 +118,7 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-We study online learning algorithms of the form $\theta^\prime \gets F(\theta, z)$ where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
+We study online learning algorithms of the form <Latex>\theta^\prime \gets F(\theta, z)</Latex> where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
