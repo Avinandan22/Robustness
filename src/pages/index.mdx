@@ -129,7 +129,10 @@ Our main contribution is a robustness certificate, that computes an upper bound 
 
 In particular, we show that for any function <LaTeX formula='\lambda(\theta)' inline={true}/>, we have that
 
-<LaTeX formula='\sup_{\theta, z_{\text{adv}}} \lambda(\theta) - \mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))] +\ell_{\text{adv}}(\theta)' />
+<LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta)' />
+
+## Derivation of the Compute Certificate
+
 
 
 ##Meta-learning a robust learning algorithm
@@ -151,9 +154,10 @@ The key here is to find a defense that works well on average, even when faced wi
 
 <HighlightedSection>
  
-## Experiments
+## Experiments on mean estimation
 
-We tested our defense on a set of 50 Gaussian distributions (a common data type in statistics). The defense parameter was trained on 10 randomly chosen distributions, and we tested how well it performed when faced with poisoned data.
+
+We tested our defense on a set of 50 Gaussian distributions. The defense parameter was trained on 10 randomly chosen distributions, and we tested how well it performed when faced with poisoned data.
 
 The results (see Figure 3) demonstrate that our defense significantly improves performance compared to training without any defense. We varied the learning rates and the fraction of samples corrupted by the dynamic adversary.
 
