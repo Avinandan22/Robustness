@@ -101,7 +101,7 @@ We assume that our learning algorithm is trying to estimate a set of parameters 
 
 Some of the data points may be poisoned by an adversary who wants to mislead the learning algorithm towards parameters that optimize some adversarial objective <LaTeX formula='\ell_{\text{adv}}(\theta)'/>, which could represent the prediction error of the model (for an adversary simply targeting reducing the performance of the learning algorithm) or more targeted objectives (like the model having a favorable view of a certain political party). At each step, the algorithm might receive poisoned data with a certain probability. This is controlled by a parameter <LaTeX formula='\epsilon' inline={true}/>, which determines what fraction of data points are poisoned. Thus we have
 
-<LaTeX formula='z = z_{\text{adv}} \text{ with probability} \epsilon, z \sim \mathbb{P}_{\text{data}} \text{ with probability } 1-\epsilon'>
+<LaTeX formula='z = z_{\text{adv}} \text{ with probability} \epsilon, z \sim \mathbb{P}_{\text{data}} \text{ with probability } 1-\epsilon'/>
 
 Unlike standard data poisoning attacks, where the poisoning adversary must choose the poisoned data points before learning happens, our setting allows the adversary to observe the online learning process and adjust their attack as the algorithm learns. This creates a more powerful threat model that can achieve stronger poisoning.
 <Figure>
