@@ -139,7 +139,7 @@ For any function <LaTeX formula='\lambda(\theta)' inline={true}/>, the worst cas
 
 </HighlightedSection>
 
-## Derivation of the Certificate
+# Derivation of the Certificate
 
 To see why the above result is true, let's assume that <LaTeX formula='\mu' inline={true}/> denotes the stationary distribution for the Markov Chain induced by <LaTeX formula='\Pi' inline={true}/>. We are interested in upper bounding
 
@@ -159,16 +159,15 @@ Since  <LaTeX formula='\mu' inline={true}/> and <LaTeX formula=' \Pi_{z_{\text{a
 
 showing that our certificate is indeed an upper bound on the adversarial objective (*)
 
-##Meta-learning a robust learning algorithm
+## Meta-learning a robust learning algorithm
 
 In order to make the above certificate practically useful, we adopt a meta-learning framework we aim to design a learning algorithm that performs well across a range of distributions. We optimize a combination of two objectives:
 
+<LaTeX formula='\mathbb{E}_{\mathbb{P}_{\text{data}} \sim \mathcal{P}}[\text{Benign Performance}(F) - \kappa \text{RobustnessCertificate}(F)' />
+
+where first component focuses on the learning algorithm's ability to perform effectively without an adversary and the second component provides an upper bound on the potential worst-case loss the algorithm might face when an adversary is involved. The key here is to find a defense that works well on average, even when faced with new, unseen data distributions. We find that this approach can be applied successfully to mean estimation, binary and multiclass classification and learning reward functions from human feedback.
 
 
-The first component focuses on the algorithm's ability to perform effectively without an adversary, by ensuring it converges to a stable set of parameters that results in low expected loss. The second component provides an upper bound on the potential worst-case loss the algorithm might face when an adversary is involved.
-
-
-The key here is to find a defense that works well on average, even when faced with new, unseen data distributions.
 <Figure>
   <Image slot="figure" source={Figure3} altText="Schematic of robustness certificate." />
   <span slot="caption">Figure 2: Schematic of robustness certificate.</span>
