@@ -80,8 +80,6 @@ export const components = {pre: CodeBlock, table: Table}
 
 ## Abstract
 
-<LaTeX formula='E=mc^2'/>
-
 Machine learning (ML) and AI rely on massive, uncurated datasets, where verifying data quality is often impractical. As AI models increasingly incorporate input from untrusted users, they become more vulnerable to carefully orchestrated attacks that can implant malicious behaviors into AI. Adversarial data poisoning poses significant cybersecurity risks, ranging from life-threatening misdiagnoses to market disruptions. As illustrated in Table 1, these attacks can vary depending on the stage at which they occur, during training or deployment. 
 
 <Figure>
@@ -120,7 +118,7 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-We study online learning algorithms of the form $$\theta^\prime \gets F(\theta, z)$$ where $\theta$ are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
+We study online learning algorithms of the form <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> where <LaTeX formula='\theta'/>  are the model parameters being estimated and <LaTeX formula='z'/> denotes the current datapoint or batch of datapoints.
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
