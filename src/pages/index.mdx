@@ -87,7 +87,7 @@ Machine learning (ML) and AI rely on massive, uncurated datasets, where verifyin
   <span slot="caption">Table 1: Cybersecurity risks of adversarial data poisoning.</span>
 </Figure>
 
-Currently, much research focuses on certifying model robustness against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). Most work in this space studies adversaries poisoning offline datasets in a single step, making these attacks non-dynamic.
+Most prior research focuses on certifying robustness of AI training algorithms against static adversaries that modify a portion of the offline dataset before the training algorithm is applied (as shown in Figure 1). 
 
 Dynamically optimized attack strategies enhance the effectiveness of adversarial poisoning. Online attackers can observe the trained algorithm in real time and adapt their poisoning tactics to the evolving behavior of the ML model. This was first demonstrated in [this paper](https://arxiv.org/abs/1808.08994), and subsequent work has expanded these initial findings in multiple directions
 
@@ -118,7 +118,7 @@ Unlike standard data poisoning attacks, where the poisoning adversary must choos
 
 ## How the adversary affects the learning process
 
-We study online learning algorithms of the form <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> where <LaTeX formula='\theta'/>  are the model parameters being estimated and <LaTeX formula='z'/> denotes the current datapoint or batch of datapoints.
+We study online learning algorithms of the form <LaTeX formula='\theta^\prime \gets F(\theta, z)'/> where $\theta$  are the model parameters being estimated and $z$ denotes the current datapoint or batch of datapoints.
 
 The learning process forms a Markov chain, where the current estimate of the parameters depends on all previous estimates and the data received. The adversary tries to influence this process by poisoning the data at certain points. We need to understand how this affects the parameter estimates over time.
 
