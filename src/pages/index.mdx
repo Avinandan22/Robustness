@@ -177,10 +177,10 @@ where first component focuses on the learning algorithm's ability to perform eff
 
  <HighlightedSection>
 
-## Proof of concept experiments on mean estimation
+## Experiments on learning rewards from humand feedback
 
 
-We conduct reward learning experiments using Helpsteer, an open-source helpfulness dataset that is used to align large language models to become more helpful, factually correct and coherent, while being adjustable in terms of the complexity and verbosity of its responses. 
+We conduct reward learning experiments using [Helpsteer](https://huggingface.co/datasets/nvidia/HelpSteer), an open-source helpfulness dataset that is used to align large language models to become more helpful, factually correct and coherent, while being adjustable in terms of the complexity and verbosity of its responses. 
 
 Since the datasets of human feedback, both for open source and closed sourced models, are typically composed of users in the wild using the model, there is potential for adversaries to introduce poisoning. This can lead to the learned reward model favoring specific demographic groups, political entities or unscientific points of view, eventually leading to bad and potentially harmful experiences for users of language models fine tuned on the learned reward.
 
