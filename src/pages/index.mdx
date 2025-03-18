@@ -149,7 +149,7 @@ We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta^\prime|\the
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \lambda(\theta)]=\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta)] + \mathbb{E}_{\theta^\prime \sim \mu}[\mathbb{E}_{\theta \sim \Pi(\theta|\theta^\prime)}[\lambda(\theta)]]'/>
 
-Noting that in the final term we can relabel <LaTeX formula='\theta \to \theta^\prime, \theta^\prime \to \theta' inline={true}/>, the above expression can be seen as an expectation over $\theta \sim \mu$:
+Noting that in the final term we can relabel <LaTeX formula='\theta \to \theta^\prime, \theta^\prime \to \theta' inline={true}/>, the above expression can be seen as an expectation over <LaTeX formula='\theta \sim \mu' inline={true}/>:
 
 <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\lambda(\theta^\prime)]]'/>
 
@@ -177,7 +177,7 @@ where first component focuses on the learning algorithm's ability to perform eff
 
  <HighlightedSection>
 
-## Experiments on learning rewards from humand feedback
+## Experiments on learning rewards from human feedback
 
 
 We conduct reward learning experiments using [Helpsteer](https://huggingface.co/datasets/nvidia/HelpSteer), an open-source helpfulness dataset that is used to align large language models to become more helpful, factually correct and coherent, while being adjustable in terms of the complexity and verbosity of its responses. 
