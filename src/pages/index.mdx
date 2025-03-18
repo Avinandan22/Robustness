@@ -151,11 +151,11 @@ We have that <LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\Pi(\theta^\prime|\the
 
 Noting that in the final term we can relabel <LaTeX formula='\theta \to \theta^\prime, \theta^\prime \to \theta' inline={true}/>, the above expression can be seen as an expectation over $\theta \sim \mu$:
 
-<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\mu(\theta^\prime)]]'/>
+<LaTeX formula='\mathbb{E}_{\theta \sim \mu}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\lambda(\theta^\prime)]]'/>
 
 Since  <LaTeX formula='\mu' inline={true}/> and <LaTeX formula=' \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)' inline={true}/> are probability measures, no matter what strategy the dynamic adversary chooses, they cannot increase the adversarial objective beyond
 
-<LaTeX formula='\sup_{\theta, z_{\text{adv}}}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\mu(\theta^\prime)]]'/>
+<LaTeX formula='\sup_{\theta, z_{\text{adv}}}[\ell_{\text{adv}}(\theta)-\lambda(\theta) + \mathbb{E}_{\theta^\prime \sim \Pi_{z_{\text{adv}}}(\theta^\prime|\theta)}[\lambda(\theta^\prime)]]'/>
 
 showing that our certificate is indeed an upper bound on the adversarial objective (*)
 
