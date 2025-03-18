@@ -27,6 +27,7 @@ import Figure3 from "../assets/Figure3.avif"
 import schematic from "../assets/schematic.png"
 import table1 from "../assets/table1.webp"
 import mean from "../assets/mean.avif"
+import help from "../assets/help.png"
 
 
 import CodeBlock from "../components/CodeBlock.astro";
@@ -130,14 +131,13 @@ Our main contribution is a robustness certificate, that computes an upper bound 
 
 In particular,we can prove the following result:
 
-<HighlightedSection>
 
-### Theorem
-For any function <LaTeX formula='\lambda(\theta)' inline={true}/>, the worst case objective achieved by the adversary is at most
+<div className="border-l-4 border-blue-500 bg-gray-900 p-4 text-white">
+  <strong>Theorem:</strong> For any function <LaTeX formula='\lambda(\theta)' inline={true}/>, the worst case objective achieved by the adversary is at most
 
-> > <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta) \quad -(**)' /> 
+> > <LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta) \quad -(**)' />
+</div>
 
-</HighlightedSection>
 
 # Derivation of the Certificate
 
@@ -180,19 +180,23 @@ where first component focuses on the learning algorithm's ability to perform eff
 ## Proof of concept experiments on mean estimation
 
 
-We tested our defense on a set of 50 Gaussian distributions, where the defense was trained on 10 randomly chosen distributions, and we tested how well it performed on held out distributions under varying levels of data poisoning.
+We conduct reward learning experiments using Helpsteer, an open-source helpfulness dataset that is used to align large language models to become more helpful, factually correct and coherent, while being adjustable in terms of the complexity and verbosity of its responses. 
 
-The results (see Figure 3) demonstrate that our defense significantly improves performance compared to training without any defense. We varied the learning rates and the fraction of samples corrupted by the dynamic adversary.
+Since the datasets of human feedback, both for open source and closed sourced models, are typically composed of users `in the wild` using the model, there is potential for adversaries to introduce poisoning. This can lead to the learned reward model favoring specific demographic groups, political entities or unscientific points of view, eventually leading to bad and potentially harmful experiences for users of language models fine tuned on the learned reward.
 
 Based on our results, our algorithm performs much better at estimating the mean, even when a significant fraction of the data is poisoned.
 
 
 <Figure>
-  <Image slot="figure" source={mean} altText="Figure 4: Test performance (mean squared error between true and estimated means)" />
-  <span slot="caption">Figure 3: Test performance (mean squared error between true and estimated means).</span>
+  <div slot="figure" style="display: flex; flex-direction: column; align-items: center; gap: 10px;">
+    <Image source={help} altText="Figure: Image 1" style="max-width: 10px; height: 10px;" />
+  </div>
+  <span slot="caption">
+    Figure: We plot the robustness certificates for different hyperparameter settings: one obtained by optimizing the meta-learning loss to balance benign performance and robustness (Best Certificate) and the other arbitrarily chosen (No Defense). The certificates provide upper bounds on the objective of the optimal dynamic adversary. Additionally, we plot the highest test losses under various adversarial attacks, serving as lower bounds on the optimal adversary's objective.
+  </span>
 </Figure>
 
-</HighlightedSection>
+</HighlightedSection> 
 ## Conclusions
 
 Although we illustrated our framework using mean estimations and binary classification, its applications extend far beyond this simple example. Our defense strategies are particularly valuable for real-world AI systems, from binary classifiers making critical yes/no decisions (such as fraud detection in financial transactions) to multiclass systems categorizing data into multiple categories (such as image recognition or document topic classification).
