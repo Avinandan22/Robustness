@@ -132,7 +132,10 @@ Our main contribution is a robustness certificate, that computes an upper bound 
 In particular,we can prove the following result:
 
 
-
+<div className="border-l-4 border-blue-500 bg-gray-900 p-4 text-white">
+  <strong>Theorem:</strong> For any function <LaTeX formula='\lambda(\theta)' inline={true}/>, the worst case objective achieved by the adversary is at most
+<LaTeX formula='\sup_{\theta, z_{\text{adv}}}\mathbb{E}_{\theta^\prime \sim \Pi_{z_\text{adv}}(\theta^\prime|\theta)}[\lambda(\theta^\prime))]- \lambda(\theta) +\ell_{\text{adv}}(\theta) \quad -(**)' />
+</div>
 
 
 # Derivation of the Certificate
