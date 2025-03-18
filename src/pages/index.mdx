@@ -184,7 +184,7 @@ We conduct reward learning experiments using Helpsteer, an open-source helpfulne
 
 Since the datasets of human feedback, both for open source and closed sourced models, are typically composed of users `in the wild` using the model, there is potential for adversaries to introduce poisoning. This can lead to the learned reward model favoring specific demographic groups, political entities or unscientific points of view, eventually leading to bad and potentially harmful experiences for users of language models fine tuned on the learned reward.
 
-Based on our results, our algorithm performs much better at estimating the mean, even when a significant fraction of the data is poisoned.
+Based on our results, our our meta-learning setup allows us to learn hyperparameters of the learning algorithm which are more robust that arbitrarily chosen hyperparameters.
 
 
 <Figure>
